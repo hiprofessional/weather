@@ -1,4 +1,4 @@
-const url = '/js/data.json';
+const url = 'js/data.json';
 const temperatureUnit = '˚';
 const humidityUnit = ' %';
 const pressureUnit = ' мм. рт. ст.';
