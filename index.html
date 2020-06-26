@@ -1,83 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Погода</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
+  <script src="js/vue.js"></script>
+  <script src="js/axios.min.js"></script>
 </head>
+
 <body>
-  <div class="weather">
+  <div class="weather" id='weather-vue'>
     <div class="weather__inner">
       <div class="current">
-        <div class="current__city"> -- </div>
-        <div class="current__description"> -- </div>
-        <div class="current__temperature"> --˚</div>
+        <div class="current__city"> {{cityName}} </div>
+        <div class="current__description"> {{description}} </div>
+        <div class="current__temperature"> {{temperature}} </div>
       </div>
 
       <div class="forecast">
-        <div class="forecast__item">
-          <div class="forecast__time">Сейчас</div>
-          <div class="forecast__icon icon__01d"></div>
-          <div class="forecast__temperature"> --˚</div>
-        </div>
-
-        <div class="forecast__item">
-          <div class="forecast__time"> -- </div>
-          <div class="forecast__icon icon__01d"></div>
-          <div class="forecast__temperature"> --˚</div>
-        </div>
-
-        <div class="forecast__item">
-          <div class="forecast__time"> -- </div>
-          <div class="forecast__icon icon__04d"></div>
-          <div class="forecast__temperature"> --˚</div>
-        </div>
-
-        <div class="forecast__item">
-          <div class="forecast__time"> -- </div>
-          <div class="forecast__icon icon__04d"></div>
-          <div class="forecast__temperature"> --˚</div>
-        </div>
-
-        <div class="forecast__item">
-          <div class="forecast__time"> -- </div>
-          <div class="forecast__icon icon__02d"></div>
-          <div class="forecast__temperature"> --˚</div>
-        </div>
-
-        <div class="forecast__item">
-          <div class="forecast__time"> -- </div>
-          <div class="forecast__icon icon__02d"></div>
-          <div class="forecast__temperature"> --˚</div>
-        </div>
+        <forecast-item 
+          v-for='forecast in forecasts' 
+          v-bind:time='forecast.time' 
+          v-bind:icon='forecast.icon' 
+          v-bind:value='forecast.value'></forecast-item>
       </div>
 
       <div class="details">
         <div class="details__row">
           <div class="details__item feelslike">
             <div class="details__name">ощущается как</div>
-            <div class="details__value"> --˚</div>
+            <div class="details__value"> {{details.feelslike}}</div>
           </div>
           <div class="details__item pressure">
             <div class="details__name">давление</div>
-            <div class="details__value"> -- мм. рт. ст.</div>
+            <div class="details__value"> {{details.pressure}} </div>
           </div>
         </div>
         <div class="details__row">
           <div class="details__item humidity">
             <div class="details__name">влажность</div>
-            <div class="details__value"> -- %</div>
+            <div class="details__value"> {{details.humidity}} </div>
           </div>
           <div class="details__item wind">
             <div class="details__name">ветер</div>
-            <div class="details__value"> -- м/с</div>
+            <div class="details__value"> {{details.wind}} </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <script src='js/weather.js'></script>
+  <!-- <script src='js/weather.js'></script> -->
+  <script src='js/weather.vue.js'></script>
 </body>
+
 </html>
