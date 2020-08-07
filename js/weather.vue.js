@@ -14,7 +14,6 @@ Vue.component('forecast-item', {
   </div>`
 })
 
-
 var app = new Vue({
   el: '#weather-vue',
   data() {
@@ -49,22 +48,22 @@ var app = new Vue({
       this.forecasts = getForecast(data);
 
       this.details = getDetails(data);
+      renderDayOrNight(data);
     },
     getData() {
       return axios.get(url);
     },
     periodicTasks() {
-      setInterval(() => this.start(false), 5000);
+      setInterval(() => this.start(false), 6000000);
       setInterval(() => {
         renderDayOrNight(this.cachedData);
-      }, 2000);
+      }, 60000);
     }
   },
 
   mounted() {
     this.start(true);
   }
-
 })
 
 function getDetails(data) {
